@@ -3,3 +3,6 @@ city csv interface
 
 # v1.0.1
 public directory Vercel deployment requirement
+
+# v1.0.2
+applySchemaValidation function
