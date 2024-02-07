@@ -1,8 +1,8 @@
 import * as mongoDB from "mongodb";
 import * as dotenv from "dotenv";
-import Game from "../models/game";
+import City from "../models/city";
 
-export const collections: { games?: mongoDB.Collection<Game> } = {};
+export const collections: { games?: mongoDB.Collection<City> } = {};
 
 export async function connectToDatabase() {
     // Pulls in the .env file so it can be accessed from process.env. No path as .env is in root, the default location
@@ -21,7 +21,7 @@ export async function connectToDatabase() {
     await applySchemaValidation(db);
 
     // Connect to the collection with the specific name from .env, found in the database previously specified
-    const gamesCollection = db.collection<Game>(process.env.GAMES_COLLECTION_NAME);
+    const gamesCollection = db.collection<City>(process.env.GAMES_COLLECTION_NAME);
 
     // Persist the connection to the Games collection
     collections.games = gamesCollection;

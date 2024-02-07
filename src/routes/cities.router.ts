@@ -24,10 +24,10 @@ gamesRouter.get("/:id", async (req: Request, res: Response) => {
     try {
         // _id in MongoDB is an objectID type so we need to find our specific document by querying
         const query = { _id: new ObjectId(id) };
-        const game = await collections.games.findOne(query);
+        const city = await collections.games.findOne(query);
 
-        if (game) {
-            res.status(200).send(game);
+        if (city) {
+            res.status(200).send(city);
         }
     } catch (error) {
         res.status(404).send(`Unable to find matching document with id: ${req.params.id}`);
@@ -36,8 +36,8 @@ gamesRouter.get("/:id", async (req: Request, res: Response) => {
 
 gamesRouter.post("/", async (req: Request, res: Response) => {
     try {
-        const newGame = req.body;
-        const result = await collections.games.insertOne(newGame);
+        const newCity = req.body;
+        const result = await collections.games.insertOne(newCity);
 
         result
             ? res.status(201).send(`Successfully created a new game with id ${result.insertedId}`)
@@ -52,10 +52,10 @@ gamesRouter.put("/:id", async (req: Request, res: Response) => {
     const id = req?.params?.id;
 
     try {
-        const updatedGame = req.body;
+        const updatedCity = req.body;
         const query = { _id: new ObjectId(id) };
         // $set adds or updates all fields
-        const result = await collections.games.updateOne(query, { $set: updatedGame });
+        const result = await collections.games.updateOne(query, { $set: updatedCity });
 
         result
             ? res.status(200).send(`Successfully updated game with id ${id}`)
