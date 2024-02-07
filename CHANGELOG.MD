@@ -6,3 +6,6 @@ public directory Vercel deployment requirement
 
 # v1.0.2
 applySchemaValidation function
+
+# v1.0.3
+https://vercel.com/docs/errors/error-list
